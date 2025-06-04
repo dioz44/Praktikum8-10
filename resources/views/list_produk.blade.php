@@ -45,6 +45,13 @@
                         <button type="submit" class="btn btn-primary">Delete</button>
                     </form>
                 </td>
+                <td>
+                    <form action="{{ route('produk.edit', $item->id) }}" method="POST">  
+                        @csrf
+                        @method('GET')
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </form>
+                </td>   
             </tr>
             @endforeach
         </tbody>

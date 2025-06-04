@@ -26,7 +26,7 @@ class ListProdukController extends Controller
 
     public function delete($id)
     {
-        $produk = Produk::find($id);
+        $produk = Produk::where('id', $id)->first();
         if ($produk) {
             $produk->delete();
             return redirect()->back()->with('success', 'Produk berhasil dihapus.');
@@ -35,4 +35,22 @@ class ListProdukController extends Controller
         }
     }
 
+    // Tampilkan halaman edit produk
+    public function edit($id)
+    {
+        $produk =  $produk = Produk::where('id', $id)->first();
+        return view('edit_produk', compact('produk'));
+    }
+
+    // Proses update data
+    public function update(Request $request, $id)
+    {
+       $produk = Produk::find($id)->update([
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'harga' => $request->harga
+        ]);
+
+        return redirect('/listproduk')->with('success', 'Produk berhasil diperbarui');
+    }
 }
