@@ -39,7 +39,8 @@
                 <td>{{ $item->deskripsi }}</td>
                 <td>{{ $item->harga }}</td>
                 <td>
-                    <form action="{{ route('produk.delete', $item->id) }}" method="POST" onclick="return confirm('Are you sure you want to delete {{ $item->nama }}?')">
+                    <form action="{{ route('produk.delete', $item->id) }}" method="POST" 
+                    onclick="return confirm('Are you sure you want to delete {{ $item->nama }}?')">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-primary">Delete</button>
